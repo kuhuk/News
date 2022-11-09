@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8dp"
+            android:layout_marginTop="@dimen/dp_16dp"
+            android:layout_marginEnd="@dimen/dp_8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llyt_nav_item_news_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:layout_marginTop="@dimen/dp_12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dp_12dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/news"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/dp_16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llyt_nav_item_astronomy_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:layout_marginTop="@dimen/dp_4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dp_12dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="@dimen/dp_4dp"
+                    android:text="@string/astronomy"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/dp_16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llyt_nav_item_weather_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:layout_marginTop="@dimen/dp_4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dp_12dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="@dimen/dp_4dp"
+                    android:text="@string/weather"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/dp_16dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
