@@ -14,6 +14,6 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textColor="@color/black"
-        tools:text="Hire me name chating"
+        android:text="Hire me name chating"
         android:textSize="@dimen/sp_18sp" />
 </androidx.appcompat.widget.Toolbar>
