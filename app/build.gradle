@@ -52,6 +52,11 @@ dependencies {
     // Fragment
     def fragment_version = "1.5.4"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
 }
 
 // Allow references to generated code
