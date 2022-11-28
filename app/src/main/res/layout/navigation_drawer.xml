@@ -19,8 +19,9 @@
             android:layout_marginEnd="@dimen/dp_8dp"
             android:orientation="vertical">
 
+<!--            news container-->
             <LinearLayout
-                android:id="@+id/llyt_nav_item_news_container"
+                android:id="@+id/navItemNewsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/light_grey"
@@ -42,8 +43,9 @@
                     android:textSize="@dimen/dp_16dp" />
             </LinearLayout>
 
+<!--            astronomy container-->
             <LinearLayout
-                android:id="@+id/llyt_nav_item_astronomy_container"
+                android:id="@+id/navItemAstronomyContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/light_grey"
@@ -66,8 +68,9 @@
                     android:textSize="@dimen/dp_16dp" />
             </LinearLayout>
 
+<!--            weather container-->
             <LinearLayout
-                android:id="@+id/llyt_nav_item_weather_container"
+                android:id="@+id/navItemWeatherContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/light_grey"
