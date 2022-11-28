@@ -9,6 +9,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.RecyclerView
 import com.app.news.R
 import com.app.news.response.NewsList
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter(val context: Context, val newsList: NewsList) : RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
@@ -22,6 +23,11 @@ class NewsAdapter(val context: Context, val newsList: NewsList) : RecyclerView.A
     override fun onBindViewHolder(holder: NewsItemViewHolder, position: Int) {
         holder.view.txtTitle.text = newsList.articles.get(position).title
         holder.view.txtDescription.text = newsList.articles.get(position).description
+
+        Glide.with(context)
+            .load(Uri.parse(newsList.articles.get(position).urlToImage))
+            .into(holder.view.newsImage)
+
         holder.view.newsItemContainer.setOnClickListener {
             // open chrome custom tab here
             val url = newsList.articles.get(position).url
