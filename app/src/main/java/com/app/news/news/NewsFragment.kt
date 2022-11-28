@@ -1,7 +1,6 @@
 package com.app.news.news
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import com.app.news.response.NewsList
 import com.app.news.retrofit.NewsAPI
 import com.app.news.retrofit.RetrofitHelper
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.fragment_news.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

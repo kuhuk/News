@@ -6,4 +6,6 @@
 
     <color name="light_grey">#F8F8F8</color>
     <color name="dark_grey">#333333</color>
+
+    <color name="light_blue">#EAFCFF</color>
 </resources>
