@@ -46,7 +46,7 @@ class NewsFragment : Fragment() {
     private fun setUpRecyclerView(newsList: NewsList) {
         activity?.runOnUiThread {
             recyclerViewNews.layoutManager = LinearLayoutManager(activity)
-            recyclerViewNews.adapter = NewsAdapter(newsList)
+            recyclerViewNews.adapter = NewsAdapter(requireContext(), newsList)
         }
     }
 }
