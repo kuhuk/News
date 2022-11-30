@@ -17,7 +17,8 @@
         <ImageView
             android:id="@+id/newsImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_270dp"
+            android:src="@color/light_grey"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_marginBottom="@dimen/dp_8dp"
             android:textStyle="bold"
             android:textColor="@color/dark_grey"
-            android:text="title"/>
+            tools:text="title"/>
 
         <TextView
             android:id="@+id/txtDescription"
@@ -41,6 +42,6 @@
             android:layout_marginTop="@dimen/dp_8dp"
             android:layout_marginBottom="@dimen/dp_8dp"
             android:textColor="@color/black"
-            android:text="content"/>
+            tools:text="content"/>
     </LinearLayout>
 </LinearLayout>

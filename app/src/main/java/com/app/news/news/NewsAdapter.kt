@@ -12,6 +12,9 @@ import com.app.news.response.Articles
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import kotlinx.android.synthetic.main.item_news.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
 
@@ -28,11 +31,13 @@ class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapt
             holder.view.txtTitle.text = articles[position].title
             holder.view.txtDescription.text = articles[position].description
 
-            Glide.with(context)
-                .load(Uri.parse(articles[position].urlToImage))
-                .thumbnail(0.05f)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(holder.view.newsImage)
+            CoroutineScope(Dispatchers.Main).launch {
+                Glide.with(context)
+                    .load(Uri.parse(articles[position].urlToImage))
+                    .thumbnail(0.05f)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(holder.view.newsImage)
+            }
 
             holder.view.newsItemContainer.setOnClickListener {
                 // open chrome custom tab here

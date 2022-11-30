@@ -12,4 +12,5 @@
     <dimen name="dp_4dp">4dp</dimen>
     <dimen name="dp_24dp">24dp</dimen>
     <dimen name="sp_24sp">24sp</dimen>
+    <dimen name="dp_270dp">270dp</dimen>
 </resources>
