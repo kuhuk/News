@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.news.R
 import com.app.news.response.Articles
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
@@ -24,16 +25,18 @@ class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapt
 
     override fun onBindViewHolder(holder: NewsItemViewHolder, position: Int) {
         if (articles.size > 0) {
-            holder.view.txtTitle.text = articles.get(position).title
-            holder.view.txtDescription.text = articles.get(position).description
+            holder.view.txtTitle.text = articles[position].title
+            holder.view.txtDescription.text = articles[position].description
 
             Glide.with(context)
-                .load(Uri.parse(articles.get(position).urlToImage))
+                .load(Uri.parse(articles[position].urlToImage))
+                .thumbnail(0.05f)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.view.newsImage)
 
             holder.view.newsItemContainer.setOnClickListener {
                 // open chrome custom tab here
-                val url = articles.get(position).url
+                val url = articles[position].url
 
                 val builder = CustomTabsIntent.Builder()
                 builder.setShowTitle(true)
