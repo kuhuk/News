@@ -75,7 +75,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
-    // MVVM architecture
+    // MVVM ARCHITECTURE
     def lifecycle_version = "2.5.1"
 
     // ViewModel
