@@ -5,48 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.news.R
-import com.app.news.response.NewsList
-import com.app.news.retrofit.NewsAPI
-import com.app.news.retrofit.RetrofitHelper
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class NewsFragment : Fragment() {
+
+    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var articlesViewModel: NewsViewModel
 
     companion object {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_news, container, false)
-
-        getNewsList()
-
-        return view
+        return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
-    private fun getNewsList() {
-        val newsAPI = RetrofitHelper.getInstance().create(NewsAPI::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // launching a new coroutine
-        GlobalScope.launch {
-            val newsList: NewsList = newsAPI.getNewsList()
-            setUpRecyclerView(newsList)
-        }
+        setUpRecyclerView()
+        getNews()
     }
 
-    private fun setUpRecyclerView(newsList: NewsList) {
-        activity?.runOnUiThread {
-            recyclerViewNews.layoutManager = LinearLayoutManager(activity)
-            recyclerViewNews.adapter = NewsAdapter(requireContext(), newsList)
-        }
+    private fun getNews() {
+        articlesViewModel = ViewModelProvider(this)[NewsViewModel::class.java]
+        articlesViewModel.getNews()
+        articlesViewModel.observeArticlesListLiveData().observe(viewLifecycleOwner
+        ) { articlesList -> newsAdapter.setArticlesList(articlesList) }
+    }
+
+    private fun setUpRecyclerView() {
+        newsAdapter = NewsAdapter(requireContext())
+        recyclerViewNews.layoutManager = LinearLayoutManager(activity)
+        recyclerViewNews.adapter = newsAdapter
     }
 }

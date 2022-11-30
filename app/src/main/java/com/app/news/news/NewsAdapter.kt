@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.RecyclerView
 import com.app.news.R
-import com.app.news.response.NewsList
+import com.app.news.response.Articles
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_news.view.*
 
-class NewsAdapter(val context: Context, val newsList: NewsList) : RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
+class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
+
+    private var articles = ArrayList<Articles>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -21,27 +23,34 @@ class NewsAdapter(val context: Context, val newsList: NewsList) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: NewsItemViewHolder, position: Int) {
-        holder.view.txtTitle.text = newsList.articles.get(position).title
-        holder.view.txtDescription.text = newsList.articles.get(position).description
+        if (articles.size > 0) {
+            holder.view.txtTitle.text = articles.get(position).title
+            holder.view.txtDescription.text = articles.get(position).description
 
-        Glide.with(context)
-            .load(Uri.parse(newsList.articles.get(position).urlToImage))
-            .into(holder.view.newsImage)
+            Glide.with(context)
+                .load(Uri.parse(articles.get(position).urlToImage))
+                .into(holder.view.newsImage)
 
-        holder.view.newsItemContainer.setOnClickListener {
-            // open chrome custom tab here
-            val url = newsList.articles.get(position).url
+            holder.view.newsItemContainer.setOnClickListener {
+                // open chrome custom tab here
+                val url = articles.get(position).url
 
-            val builder = CustomTabsIntent.Builder()
-            builder.setShowTitle(true)
-            val customTabsIntent : CustomTabsIntent = builder.build()
-            customTabsIntent.launchUrl(context, Uri.parse(url))
+                val builder = CustomTabsIntent.Builder()
+                builder.setShowTitle(true)
+                val customTabsIntent : CustomTabsIntent = builder.build()
+                customTabsIntent.launchUrl(context, Uri.parse(url))
+            }
         }
     }
 
     override fun getItemCount(): Int {
-//        return newsList.totalResults
+//        return articles.size
         return 50
+    }
+
+    fun setArticlesList(articleList: List<Articles>) {
+        this.articles = articleList as ArrayList<Articles>
+        notifyDataSetChanged()
     }
 
     class NewsItemViewHolder(val view: View): RecyclerView.ViewHolder(view) {
